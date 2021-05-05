@@ -18,9 +18,9 @@ function getTime() {
         10보다 작으면 ? 다음이 동작하고
         거짓이면 : 다음이 동작함
     */
-    clockTtile.innerHTML = `${hours < 10 ? '0${hours}' : hours}
-    :${minutes < 10 ? '0${minutes}' : minutes}
-    :${seconds < 10 ? `0${seconds}` : seconds}`;
+    clockTtile.innerHTML = `${hours < 10 ? '0${hours}' : hours}:${
+        minutes < 10 ? '0${minutes}' : minutes
+    }:${seconds < 10 ? `0${seconds}` : seconds}`;
 
 }
 
