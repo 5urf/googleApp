@@ -7,20 +7,21 @@ const TODOS_LS = 'toDos';
 필터는 마치 forEach에서 함수를 실행하는것과 같이
 각각의 item과 같이 실행된다
 */
-function filterFn(toDo){ //이필터가 하는것은 어레이를 하나만든다
-    //함수가 true를 return하는 아이템들이 있는
-    
-}
 /*
     처음에, 해야할 일을 생성했을 때 'toDos' array에 추가 되도록 하기위함
     해야할 일을 생성할 때마다 'toDos'라는 array에 추가되도록
 */
-const toDos = [];
+let toDos = [];
 function deleteToDo(event){ //todoList 삭제
     const btn = event.target; //.target 를 log에 찍으면 대상이 나옴
     const li = btn.parentNode; // 타겟의 부모 노드
     toDoList.removeChild(li);
-    const cleanToDos = toDos.filter()
+    // cleanToDos 와 filter가 하는것은 filterFn이 체크가 된 아이템들의 array를 주는것
+    const cleanToDos = toDos.filter(function(toDo){ //리스트에 있는 모듬 item을 위한 함수를 실행시키는것 == 필터
+        return toDo.id !== parseInt(li.id);
+    });
+    toDos = cleanToDos; // 먼저바꾸고
+    saveToDos(); //toDos에 저장
 }
 
 // saveToDos()는 ⬆ toDos를 가져와서 로컬에 저장하는 일을 함
