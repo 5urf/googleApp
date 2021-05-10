@@ -3,11 +3,26 @@ const toDoform = document.querySelector(".js-toDoForm"),
     toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = 'toDos';
+/* 
+필터는 마치 forEach에서 함수를 실행하는것과 같이
+각각의 item과 같이 실행된다
+*/
+function filterFn(toDo){ //이필터가 하는것은 어레이를 하나만든다
+    //함수가 true를 return하는 아이템들이 있는
+    
+}
 /*
     처음에, 해야할 일을 생성했을 때 'toDos' array에 추가 되도록 하기위함
     해야할 일을 생성할 때마다 'toDos'라는 array에 추가되도록
 */
 const toDos = [];
+function deleteToDo(event){ //todoList 삭제
+    const btn = event.target; //.target 를 log에 찍으면 대상이 나옴
+    const li = btn.parentNode; // 타겟의 부모 노드
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter()
+}
+
 // saveToDos()는 ⬆ toDos를 가져와서 로컬에 저장하는 일을 함
 function saveToDos(){
     // JSON.stringify == 자바스크립트 object를 string로 바꿔준다!
@@ -22,11 +37,13 @@ function paintToDo(text){
     // li == 컨테이너 , 그안에 "span인 text"와 "button"이 들어간다.
     const li = document.createElement("li"); // 비어있는 li 만들고
     const delBtn = document.createElement("button"); // 버튼 생성
-    // 이모지 입력할때 윈도우+ . || 윈도우 + ;
-    delBtn.innerText = "❌";
     const span = document.createElement("span"); // span 생성
     const newId =  toDos.length +1; // local storage 에도 투두를 저장해둬야 하기 때문!
-    span.innerText = text
+    // 이모지 입력할때 윈도우+ . || 윈도우 + ;
+    delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteToDo);
+    
+    span.innerText = text;
     // appendChild == 무언가를 그의 father element 안에 넣는 것
     li.appendChild(delBtn); // 버튼을 li 안에 넣기
     li.appendChild(span); // span을 li 안에 넣기
